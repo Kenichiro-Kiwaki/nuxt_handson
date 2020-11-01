@@ -5,6 +5,7 @@ const todoRef = db.collection('todos')
 export const state = () => ({
     userUid: '',
     userName: '',
+    userPhoto: '',
     todos:[]
 })
 
@@ -14,6 +15,9 @@ export const mutations = {
     },
     setUserName(state, userName) {
         state.userName = userName
+    },
+    setUserPhoto(state, userPhoto) {
+        state.userPhoto = userPhoto
     },
     addTodos(state, todo) {
         state.todos.push(todo)
@@ -31,6 +35,7 @@ export const actions = {
         const user = result.user;
         commit('setUserUid', user.uid)
         commit('setUserName', user.displayName)
+        commit('setUserPhoto', user.photoURL)
     }).catch(function (error) {
         var errorCode = error.code;
         console.log('error : ' + errorCode)
@@ -72,6 +77,9 @@ export const getters = {
     },
     getUserName(state) {
         return state.userName
+    },
+    getUserPhoto(state) {
+        return state.userPhoto
     },
     getTodos(state) {
         return state.todos

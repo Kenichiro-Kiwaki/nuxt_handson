@@ -2,10 +2,11 @@
   <div class="container">
     <p>
       user: {{ $store.getters.getUserName }}
-    </p><br>
+    </p>
+    <img :src=" $store.getters.getUserPhoto " />
     <button class="button is-primary is-rounded" @click="login">
       ログイン
-    </button><br>
+    </button>
     <table class="table is-narrow">
       <thead>
         <tr>
@@ -19,7 +20,7 @@
           <td>{{todo.limit}}</td>
         </tr>
       </tbody>
-   </table><br>
+   </table>
    <div class="field is-grouped">
     <p class="control is-expanded">
       <input v-model="newTodo" class="input" type="text" placeholder="todo">
@@ -44,6 +45,13 @@ export default {
       newLimit: ''
     }
   },
+  // computed() {
+  //   return {
+  //     url() {
+  //       this.$store.dispatch('getUserPhoto')
+  //     } 
+  //   }
+  // },
   methods: {
     login() {
       this.$store.dispatch('login')    
